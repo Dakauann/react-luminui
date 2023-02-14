@@ -3,6 +3,10 @@
     "version": "1.0.2",
     "description": "Lumin-UI for react, with lots of new features!",
     "main": "dist/cjs/index.js",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/Dakauann/react-luminui.git"
+    },
     "module": "dist/esm/index.js",
     "files": [
         "dist"
