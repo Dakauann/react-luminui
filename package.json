@@ -1,6 +1,6 @@
 {
     "name": "@lumin-ui/react",
-    "version": "1.0.3",
+    "version": "1.0.4",
     "description": "Lumin-UI for react, with lots of new features!",
     "main": "dist/cjs/index.js",
     "repository": {
