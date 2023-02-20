@@ -39,9 +39,10 @@ module.exports = {
 import { Button } from '@lumin-ui/react';
 
 export default function App() {
+    // variants: primary, secondary, ghost, outline and warning
     return (
         <div className="bg-gray-100 min-h-screen">
-            <Button>Click me</Button>
+            <Button variant="primary">Click me</Button>
         </div>
     );
 }

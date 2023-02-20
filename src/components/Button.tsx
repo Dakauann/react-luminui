@@ -1,6 +1,12 @@
 import React from 'react';
+import { ComponentPropsWithoutRef } from 'react';
 
-export default function Button({ children, variant }: { children: React.ReactNode; variant: 'primary' | 'secondary' | 'outline' | 'ghost' | 'warning' }) {
+interface ButtonProps extends ComponentPropsWithoutRef<'button'> {
+    children: React.ReactNode;
+    variant: 'primary' | 'secondary' | 'outline' | 'ghost' | 'warning';
+}
+
+export default function Button({ children, variant, ...props }: ButtonProps) {
     const variantClass = {
         primary: 'btn',
         secondary: 'btn-secondary',
@@ -9,5 +15,9 @@ export default function Button({ children, variant }: { children: React.ReactNod
         warning: 'btn-warning'
     }[variant];
 
-    return <button className={variantClass}>{children}</button>;
+    return (
+        <button {...props} className={props.className ? `${props.className} ${variantClass}` : variantClass}>
+            {children}
+        </button>
+    );
 }
