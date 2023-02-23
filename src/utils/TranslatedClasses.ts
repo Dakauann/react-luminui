@@ -1,41 +1,56 @@
 const translatedClasses: {
-    wFull?: string;
-    wAuto?: string;
-    wMin?: string;
-    wMax?: string;
-    wScreen?: string;
+    wfull?: string;
+    wauto?: string;
+    wmin?: string;
+    wmax?: string;
+    wscreen?: string;
 
-    hFull?: string;
-    hAuto?: string;
-    hMin?: string;
-    hMax?: string;
-    hScreen?: string;
+    hfull?: string;
+    hauto?: string;
+    hmin?: string;
+    hmax?: string;
+    hscreen?: string;
+
+    fcol?: string;
+    frow?: string;
+    fwrap?: string;
+    fnowrap?: string;
 } = {
-    wFull: 'w-full',
-    wAuto: 'w-auto',
-    wMin: 'w-min',
-    wMax: 'w-max',
-    wScreen: 'w-screen',
+    wfull: 'w-full',
+    wauto: 'w-auto',
+    wmin: 'w-min',
+    wmax: 'w-max',
+    wscreen: 'w-screen',
 
-    hFull: 'h-full',
-    hAuto: 'h-auto',
-    hMin: 'h-min',
-    hMax: 'h-max',
-    hScreen: 'h-screen'
+    hfull: 'h-full',
+    hauto: 'h-auto',
+    hmin: 'h-min',
+    hmax: 'h-max',
+    hscreen: 'h-screen',
+
+    fcol: 'flex-col',
+    frow: 'flex-row',
+    fwrap: 'flex-wrap',
+    fnowrap: 'flex-nowrap'
 };
 
 type ITranslatedClasses = {
-    wFull?: boolean;
-    wAuto?: boolean;
-    wMin?: boolean;
-    wMax?: boolean;
-    wScreen?: boolean;
+    wfull?: boolean;
+    wauto?: boolean;
+    wmin?: boolean;
+    wmax?: boolean;
+    wscreen?: boolean;
 
-    hFull?: boolean;
-    hAuto?: boolean;
-    hMin?: boolean;
-    hMax?: boolean;
-    hScreen?: boolean;
+    hfull?: boolean;
+    hauto?: boolean;
+    hmin?: boolean;
+    hmax?: boolean;
+    hscreen?: boolean;
+
+    fcol?: boolean;
+    frow?: boolean;
+    fwrap?: boolean;
+    fnowrap?: boolean;
 };
 
 export { ITranslatedClasses, translatedClasses };

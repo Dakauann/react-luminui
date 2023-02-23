@@ -1,24 +1,29 @@
 import React from 'react';
-import { ComponentPropsWithoutRef } from 'react';
+import { translatedClasses } from '../utils/TranslatedClasses';
+import { ComponentType, BooleanKeys } from '../types/ComponentType';
 
-interface StackProps extends ComponentPropsWithoutRef<'div'> {
-    children: React.ReactNode;
-    hCentered?: boolean;
-    vCentered?: boolean;
-}
+type StackProps = ComponentType<'div'> & {
+    variant: 'primary' | 'secondary' | 'outline' | 'ghost' | 'warning';
+};
+type StackBooleanProps = Pick<StackProps, BooleanKeys<StackProps>>;
 
-export default function Stack({ children, vCentered, hCentered, ...props }: StackProps) {
-    const horizontallyCentered = {
-        0: 'flex items-center justify-center',
-        1: 'flex items-center justify-start'
-    }[hCentered ? 0 : 1];
-    const verticallyCentered = {
-        0: 'flex items-center justify-center',
-        1: 'flex items-start justify-center'
-    }[vCentered ? 0 : 1];
+export default function Stack({ children, variant, ...props }: StackProps) {
+    const classes = Object.keys(props)
+        .filter((key) => Boolean(props[key as keyof StackBooleanProps]))
+        .map((key) => {
+            if (props[key as keyof StackBooleanProps]) {
+                return translatedClasses[key as keyof typeof translatedClasses];
+            } else {
+                return null;
+            }
+        })
+        .filter(Boolean)
+        .join(' ');
+
+    console.log('Stack: ', classes);
 
     return (
-        <div {...props} className={props.className ? `${props.className} ${verticallyCentered} ${horizontallyCentered}` : horizontallyCentered + ' ' + verticallyCentered}>
+        <div {...props} className={props.className ? `flex border-2 border-red-500 ${classes} ${props.className}` : classes}>
             {children}
         </div>
     );
