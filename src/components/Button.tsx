@@ -1,10 +1,11 @@
 import React from 'react';
-import { ComponentPropsWithoutRef } from 'react';
+import { translatedClasses } from '../utils/TranslatedClasses';
+import { ComponentType, BooleanKeys } from '../types/ComponentType';
 
-interface ButtonProps extends ComponentPropsWithoutRef<'button'> {
-    children: React.ReactNode;
+type ButtonProps = ComponentType<'button'> & {
     variant: 'primary' | 'secondary' | 'outline' | 'ghost' | 'warning';
-}
+};
+type ButtonBooleanProps = Pick<ButtonProps, BooleanKeys<ButtonProps>>;
 
 export default function Button({ children, variant, ...props }: ButtonProps) {
     const variantClass = {
@@ -15,8 +16,20 @@ export default function Button({ children, variant, ...props }: ButtonProps) {
         warning: 'btn-warning'
     }[variant];
 
+    const classes = Object.keys(props)
+        .filter((key) => Boolean(props[key as keyof ButtonBooleanProps]))
+        .map((key) => {
+            if (props[key as keyof ButtonBooleanProps]) {
+                return translatedClasses[key as keyof typeof translatedClasses];
+            } else {
+                return null;
+            }
+        })
+        .filter(Boolean)
+        .join(' ');
+
     return (
-        <button {...props} className={props.className ? `${props.className} ${variantClass}` : variantClass}>
+        <button {...props} className={props.className ? `${variantClass} ${classes} ${props.className}` : variantClass + ' ' + classes}>
             {children}
         </button>
     );
