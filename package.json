@@ -1,6 +1,6 @@
 {
     "name": "@lumin-ui/react",
-    "version": "1.0.4",
+    "version": "1.0.5",
     "description": "Lumin-UI for react, with lots of new features!",
     "main": "dist/cjs/index.js",
     "repository": {
@@ -9,14 +9,13 @@
     },
     "module": "dist/esm/index.js",
     "files": [
-        "dist"
+        "dist/**/*"
     ],
     "scripts": {
         "dev:compiler": "nodemon --ignore dist --ext \"ts, tsx, js, cjs, mjs\" --exec \"npm run build:cjs\" ",
         "build": "rm -rf dist/ && npm run build:esm && npm run build:cjs && echo 'Build finished!'",
         "build:esm": "tsc",
-        "build:cjs": "tsc --module CommonJS --outDir dist/cjs",
-        "install": "npm run build"
+        "build:cjs": "tsc --module CommonJS --outDir dist/cjs"
     },
     "author": "Dakauann Cavalcante",
     "license": "MIT",
